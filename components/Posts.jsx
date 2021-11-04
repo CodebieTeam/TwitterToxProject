@@ -5,7 +5,7 @@ const Post = ({ img_link, user, date, content }) => {
         border: "1px solid black",
         marginBottom: "25px",
         width: "270px",
-        backgroundColor: "black",
+        backgroundColor: "red",
         display: "flex",
         flexDirection: "column",
       }}
