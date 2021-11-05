@@ -1,4 +1,8 @@
 const Post = ({ img_link, user, date, content }) => {
+  //AAAAAAAAAAAAAAAAAAAAANC%2BVQEAAAAAXVwRDkEgSEPNYc%2Fa3vXi7%2FRrSsM%3DVEd5WXZzS1AQHScFSrkB1JP2HhV0TVt4AQpNsOZy9Tk8OQgDpH
+  fetch("http://localhost:3000/api/getposts")
+    .then((response) => response.json())
+    .then((data) => console.log(data));
   return (
     <div
       style={{
