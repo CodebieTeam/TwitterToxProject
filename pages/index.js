@@ -2,8 +2,19 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Post from "../components/Posts";
-
+import { useState, useEffect } from "react";
 export default function Home() {
+  let [tweets, set_tweets] = useState(null);
+
+  useEffect(() => {
+    if (!tweets)
+      fetch("http://localhost:3000/api/getposts")
+        .then((response) => response.json())
+        .then(({ tweets, user }) =>
+          set_tweets({ content: tweets, user: user })
+        );
+  });
+
   const Posts = [
     {
       img_link: "http://dessins-animes.com/da/horton/images/horton-04.jpg",
@@ -19,17 +30,18 @@ export default function Home() {
     },
   ];
   const Post_Components = [];
-
-  Posts.forEach((post) => {
-    Post_Components.push(
-      <Post
-        user={post.user}
-        date={post.date}
-        content={post.content}
-        img_link={post.img_link}
-      />
-    );
-  });
+  console.log(tweets?.user);
+  if (tweets)
+    tweets.content.forEach((tweet) => {
+      Post_Components.push(
+        <Post
+          user={tweets?.user.name}
+          date={""}
+          content={tweet.text}
+          img_link={""}
+        />
+      );
+    });
   return (
     <div className={styles.container}>
       <Head>

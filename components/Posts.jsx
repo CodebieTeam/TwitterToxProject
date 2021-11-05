@@ -1,12 +1,10 @@
 const Post = ({ img_link, user, date, content }) => {
-  //AAAAAAAAAAAAAAAAAAAAANC%2BVQEAAAAAXVwRDkEgSEPNYc%2Fa3vXi7%2FRrSsM%3DVEd5WXZzS1AQHScFSrkB1JP2HhV0TVt4AQpNsOZy9Tk8OQgDpH
-  fetch("http://localhost:3000/api/getposts")
-    .then((response) => response.json())
-    .then((data) => console.log(data));
+  //here//
+
   return (
     <div
       style={{
-        border: "1px solid black",
+        borderRadius: "25px",
         marginBottom: "25px",
         width: "270px",
         backgroundColor: "red",
@@ -15,7 +13,7 @@ const Post = ({ img_link, user, date, content }) => {
       }}
     >
       <div>
-        <img
+        {/*      <img
           style={{
             height: "75px",
             width: "75px",
@@ -24,7 +22,7 @@ const Post = ({ img_link, user, date, content }) => {
             margin: "2px",
           }}
           src={img_link}
-        />
+        />*/}
         <h1
           style={{
             fontFamily: "initial",
@@ -52,4 +50,6 @@ const Post = ({ img_link, user, date, content }) => {
     </div>
   );
 };
+
+const toxicity_to_red_gradient = () => {};
 export default Post;
