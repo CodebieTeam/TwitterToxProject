@@ -8,7 +8,7 @@ export default function Home() {
 
   useEffect(() => {
     if (!tweets)
-      fetch("https://twitter-tox-project1.vercel.app/api/getposts")
+      fetch("http://localhost:3000/api/getposts")
         .then((response) => response.json())
         .then(({ tweets, user }) =>
           set_tweets({ content: tweets, user: user })

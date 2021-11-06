@@ -1,19 +1,8 @@
 require("@tensorflow/tfjs");
 const toxicity = require("@tensorflow-models/toxicity");
-
+const threshold = 0.67;
+const model = toxicity.load(threshold);
 const Post = ({ img_link, user, date, content }) => {
-  //here//
-  const init = async () => {
-    const threshold = 0.67;
-    const model = await toxicity.load(threshold);
-    const predictions = await model.classify(content);
-    predictions.forEach((element) => {
-      console.forEach(element.result[0].match);
-      console.log(element.results.match);
-    });
-  };
-  init();
-
   return (
     <div
       style={{
