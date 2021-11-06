@@ -22,7 +22,7 @@ const Menu = ({ set_tweets }) => {
       <input id="input"></input>
       <button
         onClick={() => {
-          fetch("http://localhost:3000/api/getposts", {
+          fetch("https://twitter-tox-project.vercel.app/api/getposts", {
             body: document.getElementById("input").value,
             method: "POST",
           })
