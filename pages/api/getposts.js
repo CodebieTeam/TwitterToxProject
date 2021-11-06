@@ -4,8 +4,10 @@ const twitterClient = new TwitterApi(
 );
 const client = twitterClient.readOnly;
 export default async function handler(req, res) {
-  const user = await client.v2.users(["12"]);
-  console.log(user);
-  const tweets = await client.v2.userTimeline("12", { exclude: "replies" });
+  const user = await client.v2.usersByUsernames([req.body]);
+
+  const tweets = await client.v2.userTimeline(user.data[0].id, {
+    exclude: "replies",
+  });
   res.status(200).json({ tweets: tweets._realData.data, user: user.data[0] });
 }

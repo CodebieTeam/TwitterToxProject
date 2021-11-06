@@ -1,15 +1,14 @@
-require("@tensorflow/tfjs");
-const toxicity = require("@tensorflow-models/toxicity");
-const threshold = 0.67;
-const model = toxicity.load(threshold);
-const Post = ({ img_link, user, date, content }) => {
+import { useState, useEffect } from "react";
+const Post = ({ img_link, user, date, content, toxicity }) => {
+  const [model, update_model] = useState(null);
+
   return (
     <div
       style={{
         borderRadius: "25px",
         marginBottom: "25px",
         width: "270px",
-        backgroundColor: "red",
+        backgroundColor: toxicity,
         display: "flex",
         flexDirection: "column",
       }}
@@ -53,5 +52,4 @@ const Post = ({ img_link, user, date, content }) => {
   );
 };
 
-const toxicity_to_red_gradient = () => {};
 export default Post;
